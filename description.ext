@@ -1,0 +1,119 @@
+respawn=3;
+respawndelay=15;
+disabledai=1;
+
+OnLoadMissionTime=true;
+OnLoadMission="EVO RED 3.01 Chernarus";
+
+//defines
+#include "RSC\RscEvoResources.hpp"
+#include "RSC\Resources.hpp"
+#include "RSC\Gui.hpp"
+
+
+
+
+
+class Header
+{
+	gameType=COOP;
+	minPlayers=1;
+	maxPlayers=40;
+};
+
+class Params
+{	
+	//0	
+	class StartTime
+	{		
+		title="$STR_PARAM_StartTime";
+		values[]={4.5,7.0,11.0,18.5,1.0};
+		texts[]={$STR_PARAM_TimeEarlyMorning,$STR_PARAM_TimeMorning,$STR_PARAM_TimeDay,$STR_PARAM_TimeEvening,$STR_PARAM_TimeNight};
+		default=4.5;
+	};
+	
+	//1
+	class Weather
+	{		
+		title="$STR_PARAM_Weather";
+		values[]={1.0,0.66,0.33,0.0,-1.0};
+		texts[]={$STR_PARAM_WeatherTerrible,$STR_PARAM_WeatherBad,$STR_PARAM_WeatherCalm,$STR_PARAM_WeatherClear,$STR_PARAM_WeatherDynamic};
+		default=0.0;
+	};
+
+	//2
+	class Towns
+	{		
+		title="$STR_PARAM_Towns";
+		values[]={1,2,3,4,5,6,7,8,9,10};
+		texts[]={"1","2","3","4","5","6","7","8","9","10"};
+		default=10;
+	};
+	
+	//3
+	class Capture
+	{		
+		title="$STR_PARAM_Capture";
+		values[]={2,5};
+		texts[]={$STR_PARAM_CaptureAway,$STR_PARAM_CaptureClosest};
+		default=2;
+	};
+
+	//4
+	class Detevehicle
+	{		
+		title="$STR_PARAM_Deletevehicle";
+		values[]={1200,2400,3600};
+		texts[]={$STR_PARAM_Deletevehicle20,$STR_PARAM_Deletevehicle40,$STR_PARAM_Deletevehicle60};
+		default=3600;
+	};
+
+	//5
+	class HealPackets
+	{		
+		title="$STR_PARAM_HealPackets";
+		values[]={0,1,2,4,5,6,7};
+		texts[]={$STR_PARAM_HealPackets0,"1","2","4","5","6","7"};
+		default=7;
+	};
+
+	//6
+	class UsePriceHealPackets
+	{		
+		title="$STR_PARAM_UsePriceHealPackets";
+		values[]={0,5};
+		texts[]={$STR_PARAM_UsePrice0,$STR_PARAM_UsePrice5};
+		default=0;
+	};
+	
+	//7
+	class TKLLimit
+	{
+	    title="$STR_PARAM_TKL_Limit";
+	    values[]={0,1,2,3,4,5,};
+	    texts[]={"0","1","2","3","4","5"};
+	    default=5;
+	};
+
+};
+
+class CfgSounds
+{
+	class ffa_sound_smokeshot
+	{		
+		name = "ffa_sound_smokeshot";
+		sound[] = {"snd\grenadelauncher_1.wss",1,1};
+		titles[] = {};		
+	};
+
+};
+
+class CfgMusic
+{
+ tracks[]={start};
+ class start
+ {
+  name = "start";
+  sound[] = {"\sound\start.ogg", db+1, 1.0};
+ 	};
+};

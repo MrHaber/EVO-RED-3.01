@@ -1,0 +1,23 @@
+//Action: Touch off a radiotower
+private["_tower","_ammo"];
+if (!("PipeBomb" in (magazines player))) exitWith{Hint localize "STR_HINT_NoPipeBomb"};
+if (FFA_RADIOMINED) exitWith{};
+_tower=FFA_RADIO;
+player removeMagazine "PipeBomb";
+player playMove "AinvPknlMstpSlayWrflDnon_medic";
+sleep 3.0;
+WaitUntil{(animationState player!="AinvPknlMstpSlayWrflDnon_medic") || !(alive player)};
+if !(alive player) exitWith{};
+hint localize "STR_HINT_TowerMined";
+FFA_RADIOMINED=true;
+publicVariable "FFA_RADIOMINED";
+sleep 20;
+_ammo="M_Hellfire_AT" createVehicle getPosATL _tower;
+_tower removeAllEventHandlers "hit";
+_tower setDammage 1;
+FFA_RADIO=objNull;
+publicVariable "FFA_RADIO";
+"RadioMarker" setMarkerPos [0,0];
+FFA_AWARDUNIT_RADIO=player;
+publicVariable "FFA_AWARDUNIT_RADIO";
+[FFA_CMD_INCOMEREQUEST,FFA_PLAYERSLOT,FFA_DESTROYRADIOAWARD] call FFA_FUNC_PLAYERTOCLIENT;
